@@ -1,0 +1,124 @@
+﻿@model GPViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+    <form method="POST">
+        输入代码1: <input type="text" asp-for="code" />
+        <input type="submit" value="爬取新数据" />
+    </form>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.list[0].day)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.list[0].code)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.list[0].name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.list[0].tclose)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.list[0].high)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.list[0].low)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.list[0].topen)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.list[0].lclose)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.list[0].chg)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.list[0].pchg)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.list[0].turnover)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.list[0].voturnover)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.list[0].vaturnover)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.list[0].tcap)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.list[0].mcap)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.list)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.day)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.code)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tclose)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.high)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.low)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.topen)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.lclose)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.chg)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.pchg)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.turnover)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.voturnover)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.vaturnover)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tcap)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.mcap)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

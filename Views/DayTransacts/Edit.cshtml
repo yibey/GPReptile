@@ -1,0 +1,104 @@
+﻿@model GPReptile.Models.DayTransact
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>DayTransact</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="id" />
+            <div class="form-group">
+                <label asp-for="day" class="control-label"></label>
+                <input asp-for="day" class="form-control" />
+                <span asp-validation-for="day" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="code" class="control-label"></label>
+                <input asp-for="code" class="form-control" />
+                <span asp-validation-for="code" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="name" class="control-label"></label>
+                <input asp-for="name" class="form-control" />
+                <span asp-validation-for="name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="tclose" class="control-label"></label>
+                <input asp-for="tclose" class="form-control" />
+                <span asp-validation-for="tclose" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="high" class="control-label"></label>
+                <input asp-for="high" class="form-control" />
+                <span asp-validation-for="high" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="low" class="control-label"></label>
+                <input asp-for="low" class="form-control" />
+                <span asp-validation-for="low" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="topen" class="control-label"></label>
+                <input asp-for="topen" class="form-control" />
+                <span asp-validation-for="topen" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="lclose" class="control-label"></label>
+                <input asp-for="lclose" class="form-control" />
+                <span asp-validation-for="lclose" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="chg" class="control-label"></label>
+                <input asp-for="chg" class="form-control" />
+                <span asp-validation-for="chg" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="pchg" class="control-label"></label>
+                <input asp-for="pchg" class="form-control" />
+                <span asp-validation-for="pchg" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="turnover" class="control-label"></label>
+                <input asp-for="turnover" class="form-control" />
+                <span asp-validation-for="turnover" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="voturnover" class="control-label"></label>
+                <input asp-for="voturnover" class="form-control" />
+                <span asp-validation-for="voturnover" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="vaturnover" class="control-label"></label>
+                <input asp-for="vaturnover" class="form-control" />
+                <span asp-validation-for="vaturnover" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="tcap" class="control-label"></label>
+                <input asp-for="tcap" class="form-control" />
+                <span asp-validation-for="tcap" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="mcap" class="control-label"></label>
+                <input asp-for="mcap" class="form-control" />
+                <span asp-validation-for="mcap" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

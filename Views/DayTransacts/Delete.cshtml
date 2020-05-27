@@ -1,0 +1,111 @@
+﻿@model GPReptile.Models.DayTransact
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>DayTransact</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.day)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.day)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.code)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.code)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.tclose)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.tclose)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.high)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.high)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.low)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.low)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.topen)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.topen)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.lclose)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.lclose)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.chg)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.chg)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.pchg)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.pchg)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.turnover)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.turnover)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.voturnover)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.voturnover)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.vaturnover)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.vaturnover)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.tcap)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.tcap)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.mcap)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.mcap)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="id" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>
