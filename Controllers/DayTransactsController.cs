@@ -24,10 +24,10 @@ namespace GPReptile.Controllers
         // GET: DayTransacts
         public async Task<IActionResult> Index()
         {
-            
-            
-            
-            _service.downloadGP();
+
+
+
+
 
             var list = await _context.DayTransact.ToListAsync();
 
@@ -41,15 +41,73 @@ namespace GPReptile.Controllers
         }
 
 
+
+
         [HttpPost]
         // GET: DayTransacts
         public async Task<IActionResult> Index(string code)
         {
-            _service.download(code, "测试", "20200526", "20200526");
+            //_service.download(code, "测试", "20200526", "20200526");
+
+            int i = 0;
+            foreach (var share in _context.Share.ToArray())
+            {
+
+
+                try
+                {
+                    _service.download(share.code, share.name, "20200301", "20200601");
+                }
+                catch { }
+                i++;
+                if (i % 500 == 0)
+                {
+                    _context.DayTransact.AddRange(_service.getDtList());
+                    await _context.SaveChangesAsync();
+
+                    _service.clearList();
+                }
+              
+            }
+
+
+
+
             var list = _service.getDtList();
 
             _context.DayTransact.AddRange(list);
+            await _context.SaveChangesAsync();
 
+            return RedirectToAction("Index");
+        }
+
+
+
+        [HttpPost]
+        // GET: DayTransacts
+        public async Task<IActionResult> InitShare()
+        {
+
+            var list = new List<Share>();
+            foreach (var dic in _service.downloadGP())
+            {
+
+                var share = _context.Share.Where(r => r.code == dic.Key).FirstOrDefault();
+
+                if (share == null)
+                {
+                    share = new Share()
+                    {
+
+                        name = dic.Value,
+                        code = dic.Key
+
+                    };
+                    list.Add(share);
+                }
+            }
+
+            _context.Share.AddRange(list.ToArray());
             await _context.SaveChangesAsync();
 
             return RedirectToAction("Index");

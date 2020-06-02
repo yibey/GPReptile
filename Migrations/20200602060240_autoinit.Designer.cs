@@ -3,14 +3,16 @@ using GPReptile.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GPReptile.Migrations
 {
     [DbContext(typeof(GPContext))]
-    partial class GPContextModelSnapshot : ModelSnapshot
+    [Migration("20200602060240_autoinit")]
+    partial class autoinit
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

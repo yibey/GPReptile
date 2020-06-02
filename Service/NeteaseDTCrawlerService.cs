@@ -15,11 +15,16 @@ namespace GPReptile.Service
 {
     public class NeteaseDTCrawler
     {
-        private List<DayTransact> dtList;
+        private List<DayTransact> dtList = null;
 
         public List<DayTransact> getDtList()
         {
             return dtList;
+        }
+
+        public void clearList()
+        {
+            dtList = null;
         }
         public Dictionary<string, string> downloadGP()
         {
@@ -61,26 +66,39 @@ namespace GPReptile.Service
                 var _http = new HttpHelper(getReqUrl(originalCode, fromDate, toDate));
 
                 String rawText = _http.CreateGetHttpResponse();
-                String json = rawText.Substring(22, rawText.Length - 25);
-                dynamic obj = JsonConvert.DeserializeObject<dynamic>(json);
 
-                dtList = new List<DayTransact>();
-                foreach (var item in obj.hq)
+                dynamic obj = null;
+
+                try
                 {
-                    DayTransact dt = new DayTransact();
-                    dt.setCode(originalCode);
-                    dt.setName(name);
-                    dt.setDay(item[0].ToString());
-                    dt.setTopen(Convert.ToDouble(item[1]));
-                    dt.setTclose(Convert.ToDouble(item[2]));
-                    dt.setChg(Convert.ToDouble(item[3]));
-                    dt.setPchg(Convert.ToDouble(item[4].ToString().Replace("%", "")));
-                    dt.setLow(Convert.ToDouble(item[5]));
-                    dt.setHigh(Convert.ToDouble(item[6]));
-                    dt.setVoturnover(Convert.ToInt64(item[7]));
-                    dt.setVaturnover(Convert.ToDouble(item[8]));
-                    dt.setTurnover(Convert.ToDouble(item[9].ToString().Replace("%", "")));
-                    dtList.Add(dt);
+                    String json = rawText.Substring(22, rawText.Length - 25);
+                    obj = JsonConvert.DeserializeObject<dynamic>(json);
+                }
+                catch
+                { }
+
+                if (obj != null && obj.hq != null)
+                {
+
+                    if (dtList == null)
+                        dtList = new List<DayTransact>();
+                    foreach (var item in obj.hq)
+                    {
+                        DayTransact dt = new DayTransact();
+                        dt.setCode(originalCode);
+                        dt.setName(name);
+                        dt.setDay(item[0].ToString());
+                        dt.setTopen(Convert.ToDouble(item[1]));
+                        dt.setTclose(Convert.ToDouble(item[2]));
+                        dt.setChg(Convert.ToDouble(item[3]));
+                        dt.setPchg(Convert.ToDouble(item[4].ToString().Replace("%", "")));
+                        dt.setLow(Convert.ToDouble(item[5]));
+                        dt.setHigh(Convert.ToDouble(item[6]));
+                        dt.setVoturnover(Convert.ToInt64(item[7]));
+                        dt.setVaturnover(Convert.ToDouble(item[8]));
+                        dt.setTurnover(Convert.ToDouble(item[9].ToString().Replace("%", "")));
+                        dtList.Add(dt);
+                    }
                 }
             }
             catch (Exception ex)

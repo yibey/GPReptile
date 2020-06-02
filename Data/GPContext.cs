@@ -15,5 +15,7 @@ namespace GPReptile.Data
         }
 
         public DbSet<GPReptile.Models.DayTransact> DayTransact { get; set; }
+
+        public DbSet<GPReptile.Models.Share> Share { get; set; }
     }
 }
